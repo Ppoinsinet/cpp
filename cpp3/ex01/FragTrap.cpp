@@ -26,6 +26,7 @@ void FragTrap::meleeAttack(std::string const& target)
 
 void FragTrap::takeDamage(unsigned int amount)
 {
+    std::cout << name << " takes " << amount - armorReduction << "damage !";
     hitPoints -= amount - armorReduction;
     if (hitPoints < 0)
         hitPoints = 0;
@@ -33,6 +34,11 @@ void FragTrap::takeDamage(unsigned int amount)
 
 void FragTrap::beRepaired(unsigned int amount)
 {
+    std::cout << name << " gets repaired and gains ";
+    if (hitPoints + amount > maxHitPoints)
+        std::cout << maxHitPoints - hitPoints << " health points";
+    else
+        std::cout << amount << " health points";
     hitPoints += amount;
     if (hitPoints > maxHitPoints)
         hitPoints = maxHitPoints;
@@ -79,7 +85,7 @@ void FragTrap::vaulthunter_dot_exe(std::string const& target)
         attStun(target);
     else if (tmp == 3)
         attBoule(target);
-    else if (tmp == 4)
+    else
         attFire(target);
     energyPoints -= 25;
 }
