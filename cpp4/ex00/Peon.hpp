@@ -4,20 +4,17 @@
 #include <iostream>
 #include <string>
 
-class Peon
+#include "Victim.hpp"
+
+class Peon : public Victim
 {
 public:
-    Peon();
+    Peon(std::string name);
     ~Peon();
+
+    void getPolymorphed(void) const;
 };
 
-Peon::Peon()
-{
-}
-
-Peon::~Peon()
-{
-}
 
 
 #endif

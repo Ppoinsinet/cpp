@@ -12,18 +12,19 @@ private:
     std::string name;
     std::string title;
 public:
-    Sorcerer(std::string& name, std::string& title);
+    Sorcerer(std::string name, std::string title);
     ~Sorcerer();
 
-    std::string getName(void);
-    std::string getTitle(void);
+    std::string getName(void) const;
+    std::string getTitle(void)const;
     void setName(std::string newName);
     void setTitle(std::string newTitle);
 
     void introduce(void);
-    void polymorph(Victim const&) const;
-    void operator<<(std::ostream &out);
+    void polymorph(Victim const& target) const;
 };
+
+std::ostream& operator<<(std::ostream &out, const Sorcerer& target);
 
 
 #endif

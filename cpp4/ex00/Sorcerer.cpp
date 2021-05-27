@@ -1,6 +1,6 @@
 #include "Sorcerer.hpp"
 
-Sorcerer::Sorcerer(std::string& name, std::string& title)
+Sorcerer::Sorcerer(std::string name, std::string title)
 {
     this->name = name;
     this->title = title;
@@ -20,10 +20,21 @@ void Sorcerer::introduce(void)
 
 void Sorcerer::polymorph(Victim const& target) const
 {
-
+    target.getPolymorphed();
 }
 
-void Sorcerer::operator<<(std::ostream &out)
+std::ostream& operator<<(std::ostream &out, const Sorcerer& target)
 {
-    out << "I am " << getName() << ", " << getTitle() << ", and I like ponies!" << std::endl;
+    out << "I am " << target.getName() << ", " << target.getTitle() << ", and I like ponies!" << std::endl;
+    return (out);
+}
+
+std::string Sorcerer::getName(void) const
+{
+    return (name);
+}
+
+std::string Sorcerer::getTitle(void) const
+{
+    return (title);
 }
