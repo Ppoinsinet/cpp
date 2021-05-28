@@ -7,7 +7,7 @@ class MateriaSource : public IMateriaSource
 {
 private:
     AMateria *tab[4];
-    char size;
+    int size;
 public:
     MateriaSource(/* args */);
     ~MateriaSource();

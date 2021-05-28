@@ -19,7 +19,7 @@ public:
     virtual AMateria* clone() const = 0;
     virtual void use(ICharacter& target);
 
-    //void operator=(AMateria& const tmp);
+    void operator=(AMateria& tmp);
 };
 
 #endif

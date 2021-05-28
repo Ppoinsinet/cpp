@@ -1,13 +1,16 @@
 #ifndef CHARACTER_HPP
 #define CHARACTER_HPP
 
-#include "ICharacter.hpp"
+#include <string>
+#include <iostream>
+
 #include "AMateria.hpp"
+#include "ICharacter.hpp"
 
 class Character : public ICharacter
 {
 private:
-    char        size;
+    int        size;
     std::string name;
     AMateria *tab[4];
 public:
@@ -19,7 +22,7 @@ public:
     void unequip(int idx);
     void use(int idx, ICharacter& target);
 
-    void operator=(Character& tmp);
+    void operator=(const Character& tmp);
 };
 
 

@@ -1,4 +1,5 @@
 #include "MateriaSource.hpp"
+#include "AMateria.hpp"
 
 MateriaSource::MateriaSource()
 : size(0)
@@ -7,6 +8,10 @@ MateriaSource::MateriaSource()
     tab[1] = 0;
     tab[2] = 0;
     tab[3] = 0;
+}
+
+MateriaSource::~MateriaSource()
+{
 }
 
 void MateriaSource::learnMateria(AMateria *tmp)

@@ -1,7 +1,7 @@
 #include "Character.hpp"
 
 Character::Character(std::string newName)
-: name(newName), size(0)
+: size(0), name(newName)
 {
     tab[0] = 0;
     tab[1] = 0;
@@ -35,8 +35,11 @@ void Character::unequip(int idx)
     if (idx < 0 || idx > 3 || !tab[idx])
         return ;
     tab[idx] = 0;
-    for (idx; idx++; idx < 2)
+    while (idx < 2)
+    {
         tab[idx] = tab[idx + 1];
+        idx++;
+    }
     size--;
 }
 
@@ -47,7 +50,7 @@ void Character::use(int idx, ICharacter& target)
     tab[idx]->use(target);
 }
 
-void Character::operator=(Character& const tmp)
+void Character::operator=(const Character& tmp)
 {
     size = tmp.size;
     name = tmp.name;

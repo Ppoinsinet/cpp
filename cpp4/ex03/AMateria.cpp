@@ -19,8 +19,13 @@ unsigned int AMateria::getXP() const
     return _xp;
 }
 
-/*void AMateria::operator=(AMateria& target)
+void AMateria::use(ICharacter& target)
+{
+    std::cout << "Using material on " << target.getName() << std::endl;
+}
+
+void AMateria::operator=(AMateria& target)
 {
     type = target.type;
     _xp = target._xp;
-}*/
+}
