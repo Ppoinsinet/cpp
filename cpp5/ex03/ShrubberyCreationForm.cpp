@@ -2,7 +2,7 @@
 #include "Bureaucrat.hpp"
 
 ShrubberyCreationForm::ShrubberyCreationForm()
-: Form("ShrubberyCreation", 145, 137)
+: Form("shrubbery creation", 145, 137)
 {}
 
 void ShrubberyCreationForm::execute(Bureaucrat const& executor)
