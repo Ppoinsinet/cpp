@@ -10,7 +10,9 @@ private:
     int size;
 public:
     MateriaSource(/* args */);
+    MateriaSource(const MateriaSource &tmp);
     ~MateriaSource();
+    MateriaSource &operator=(const MateriaSource &tmp);
 
     void learnMateria(AMateria *);
     AMateria *createMateria(std::string const& type);

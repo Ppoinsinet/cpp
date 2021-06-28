@@ -1,19 +1,13 @@
 #include "Human.hpp"
 
-std::string Human::identify(void)
-{
-    return (brain.identify());
-}
+std::string Human::identify(void) const
+{ return (_brain.identify()); }
 
-Brain&       Human::getBrain(void)
-{
-    return (brain);
-}
+const Brain       &Human::getBrain(void) const
+{ return (_brain); }
 
 Human::Human(void)
-{
-}
+{}
 
 Human::~Human(void)
-{
-}
+{}

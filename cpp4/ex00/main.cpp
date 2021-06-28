@@ -1,19 +1,32 @@
 #include "Sorcerer.hpp"
 #include "Victim.hpp"
 #include "Peon.hpp"
+#include "PassiveSorcerer.hpp"
 
 int main()
 {
+    std::cout << "---------------Sorcerer----------------------" << std::endl;
     Sorcerer robert("Robert", "the Magnificient");
+    Sorcerer test;
+    Sorcerer tmp = Sorcerer(robert);
 
-    Victim jim("Jimmy");
-    
-    Peon joe("Joe");
-    
-    std::cout << robert << jim << joe;
+    test = robert;
+    std::cout << test;
 
-    robert.polymorph(jim);
-    robert.polymorph(joe);
+    std::cout << "---------------PassiveSorcerer----------------------" << std::endl;
+    PassiveSorcerer passive;
+    Victim myVictim("bob");
+    passive.polymorph(myVictim);
 
+    std::cout << "---------------Victim----------------------" << std::endl;
+    Victim jim("jim");
+    std::cout << jim;
+    jim.getPolymorphed();
+
+    Victim joe = jim;
+    std::cout << joe;
+
+
+    std::cout << std::endl;
     return (0);
 }

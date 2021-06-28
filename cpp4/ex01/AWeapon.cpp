@@ -7,34 +7,36 @@ AWeapon::AWeapon(std::string const& newName, int val_apcost, int val_damage)
     damage = val_damage;
 }
 
-AWeapon::~AWeapon()
+AWeapon::AWeapon(const AWeapon &tmp)
+: name(tmp.name), damage(tmp.damage), APCost(tmp.APCost), output(tmp.output)
+{}
+
+AWeapon &AWeapon::operator=(const AWeapon &tmp)
 {
+    name = tmp.name;
+    damage = tmp.damage;
+    APCost = tmp.APCost;
+    output = tmp.output;
+    return *this;
 }
+
+AWeapon::~AWeapon()
+{}
 
 std::string AWeapon::getName() const
-{
-    return name;
-}
+{ return name; }
 
 int AWeapon::getAPCost() const
-{
-    return APCost;
-}
+{ return APCost; }
 
 int AWeapon::getDamage() const
-{
-    return damage;
-}
+{ return damage; }
 
 std::string AWeapon::getOutput() const
-{
-    return (output);
-}
+{ return (output); }
 
 void AWeapon::setName(std::string value)
-{
-    name = value;
-}
+{ name = value; }
 
 void AWeapon::setAPCost(int value)
 {
@@ -51,6 +53,4 @@ void AWeapon::setDamage(int value)
 }
 
 void AWeapon::setOutput(std::string value)
-{
-    output = value;
-}
+{ output = value; }

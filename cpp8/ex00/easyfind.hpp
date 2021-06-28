@@ -9,8 +9,7 @@ typename T::const_iterator easyfind(T const& container, int comp)
 {
     typename T::const_iterator it;
 
-    it = std::find(container.begin(), container.end(), comp);
-    return it;
+    return std::find(container.begin(), container.end(), comp);
 }
 
 #endif

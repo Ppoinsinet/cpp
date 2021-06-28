@@ -2,9 +2,10 @@
 
 int main()
 {
+    srand(time(NULL));
+    
     ZombieHorde horde(150);
     horde.announce();
-    horde.~ZombieHorde();
     
     return (0);
 }

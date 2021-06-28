@@ -9,7 +9,11 @@ private:
     /* data */
 public:
     PlasmaRifle();
+    PlasmaRifle(const PlasmaRifle &tmp);
     ~PlasmaRifle();
+
+    PlasmaRifle &operator=(const PlasmaRifle &tmp);
+
     void attack(void) const;
 };
 

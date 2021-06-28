@@ -1,13 +1,26 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
+Bureaucrat::Bureaucrat(void)
+: name("Unknown"), grade(150)
+{}
+
+Bureaucrat::Bureaucrat(const Bureaucrat &tmp)
+: name(tmp.name), grade(tmp.grade)
+{}
+
 Bureaucrat::Bureaucrat(std::string newName)
 : name(newName), grade(150)
-{
-}
+{}
 
 Bureaucrat::~Bureaucrat()
+{}
+
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &tmp)
 {
+    name = tmp.name;
+    grade = tmp.grade;
+    return *this;
 }
 
 void Bureaucrat::increase()
@@ -25,19 +38,13 @@ void Bureaucrat::decrease()
 }
 
 std::string Bureaucrat::getName() const
-{
-    return name;
-}
+{ return name; }
 
 int Bureaucrat::getGrade() const
-{
-    return grade;
-}
+{ return grade; }
 
 void Bureaucrat::setName(std::string tmp)
-{
-    name = tmp;
-}
+{ name = tmp; }
 
 void Bureaucrat::setGrade(int tmp)
 {
@@ -62,14 +69,10 @@ void Bureaucrat::signForm(Form &form)
 }
 
 const char *Bureaucrat::GradeTooHighException::what() const throw()
-{
-    return "Grade too high";
-}
+{ return "Grade too high"; }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw()
-{
-    return "Grade too low";
-}
+{ return "Grade too low"; }
 
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& tmp)
 {

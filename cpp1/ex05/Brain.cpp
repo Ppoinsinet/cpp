@@ -3,25 +3,19 @@
 #include <sstream>
 #include <iostream>
 
-std::string  Brain::identify(void)
+std::string  Brain::identify(void) const
 {
-    std::string tmp = "";
     std::stringstream flux;
     flux << std::hex << this;
-    tmp += flux.str();
-    return (tmp);
+    return flux.str();
 }
 
-int    Brain::getAge(void)
-{
-    return (age);
-}
+int    Brain::getAge(void) const
+{ return (_age); }
 
 Brain::Brain(void)
-{
-    age = 0;
-}
+: _age(0)
+{}
 
 Brain::~Brain(void)
-{
-}
+{}

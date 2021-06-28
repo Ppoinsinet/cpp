@@ -16,11 +16,13 @@ Fixed::Fixed(const Fixed& tmp)
 Fixed::Fixed(const int newValue)
 : value(newValue)
 {
+    std::cout << "Int constructor called\n";
     value = value << bits;
 }
 
 Fixed::Fixed(const float newValue)
 {
+    std::cout << "Float constructor called\n";
     float tmp = (float)newValue * (1 << bits);
     tmp = roundf(tmp);
     value = (int)tmp;
@@ -45,18 +47,16 @@ float Fixed::toFloat(void) const
 
 int Fixed::toInt(void) const
 {
-    return (roundf(value >> bits));
+    return ((int)roundf(value >> bits));
 }
 
 void Fixed::setRawBits(int const raw)
 {
-    std::cout << "setRawBits member function called" << std::endl;
     value = raw;
 }
 
 int Fixed::getRawBits(void) const
 {
-    std::cout << "getRawBits member function called" << std::endl;
     return (value);
 }
 

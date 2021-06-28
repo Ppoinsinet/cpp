@@ -2,76 +2,85 @@
 
 Squad::Squad()
 : count(0), squad(0)
-{
-}
+{}
+
+Squad::Squad(const Squad &tmp)
+: count(0) ,squad(0)
+{ *this = tmp; }
 
 Squad::~Squad()
 {
-    ISpaceMarine *tmp = squad;
-    ISpaceMarine *next = 0;
+    squad_t *tmp = squad;
+    squad_t *next = 0;
     for (int i = 0; i < count; i++)
     {
-        next = tmp->getNext();
+        next = tmp->next;
+        delete tmp->unit;
         delete tmp;
         tmp = next;
     }
-
+    count = 0;
 }
 
-int Squad::getCount(void) const
+Squad &Squad::operator=(const Squad& tmp)
 {
-    return count;
+    squad_t *cursor, *next;
+    cursor = squad;
+    for(int i = 0; i < count; i++)
+    {
+        next = cursor->next;
+        delete cursor->unit;
+        delete cursor;
+        cursor = next;
+    }
+    count = 0;
+
+    for(int j = 0; j < tmp.getCount(); j++)
+    {
+        push(tmp.getUnit(j)->clone());
+    }
+    return *this;
 }
+
+int Squad::getCount(void) const { return count; }
 
 int Squad::push(ISpaceMarine *ptr)
 {
     if (!ptr)
         return (count);
     if (!count)
-        this->squad = ptr;
+    {
+        squad = new squad_t;
+        squad->unit = ptr;
+        squad->next = 0;
+    }
     else
     {
         for (int j = 0; j < count; j++)
             if (ptr == getUnit(j))
                 return (count);
-    
-        getUnit(count - 1)->setNext(ptr);
+        squad_t *tmp = squad;
+        for (int k = 0; k < count - 1; k++)
+            tmp = tmp->next;
+        tmp->next = new squad_t;
+        tmp->next->unit = ptr;
+        tmp->next->next = 0;
     }
-    count++;
-    return count;
+    return ++count;
 }
 
 ISpaceMarine *Squad::getUnit(int value) const
 {
     if (value < 0 || value >= count || !squad)
         return 0;
-    ISpaceMarine *tmp;
+    squad_t *tmp;
     int cursor = 0;
 
     tmp = squad;
     while(tmp && cursor < value)
     {
-        tmp = tmp->getNext();
+        tmp = tmp->next;
         cursor++;
     }
-    return tmp;
-}
-
-void Squad::operator=(const Squad& tmp)
-{
-    ISpaceMarine *cursor, *next, *prev;
-    cursor = squad;
-    for(int i = 0; i < count; i++)
-    {
-        next = cursor->getNext();
-        delete cursor;
-        cursor = next;
-    }
-    count = 0;
-
-
-    for(int j = 0; j < tmp.getCount(); j++)
-    {
-        push(tmp.getUnit(j)->clone());
-    }
+    return tmp->unit;
 }

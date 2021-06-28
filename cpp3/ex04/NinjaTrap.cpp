@@ -1,41 +1,60 @@
 #include "NinjaTrap.hpp"
 
+NinjaTrap::NinjaTrap(void)
+: ClapTrap("")
+{
+    hitPoints = 60;
+    maxHitPoints = 60;
+    energyPoints = 120;
+    maxEnergyPoints = 120;
+    level = 1;
+    meleeAttDamage = 60;
+    rangedAttDamage = 5;
+    armorReduction = 0;
+    std::cout << name << " (Ninja) is appearing with constructor" << std::endl;
+
+}
+
+NinjaTrap::NinjaTrap(const NinjaTrap &tmp)
+: ClapTrap(tmp.name)
+{
+    hitPoints = tmp.hitPoints;
+    maxHitPoints = tmp.maxHitPoints;
+    energyPoints = tmp.energyPoints;
+    maxEnergyPoints = tmp.maxEnergyPoints;
+    level = tmp.level;
+    meleeAttDamage = tmp.meleeAttDamage;
+    rangedAttDamage = tmp.rangedAttDamage;
+    armorReduction = tmp.armorReduction;
+    std::cout << name << " (Ninja) is appearing with constructor" << std::endl;
+
+}
+
 NinjaTrap::NinjaTrap(std::string newName)
 : ClapTrap(newName)
 {
-    setHitPoints(60);
-    setMaxHitPoints(60);
-    setEnergyPoints(120);
-    setMaxEnergyPoints(120);
-    setLevel(1);
-    setMeleeAttDamage(60);
-    setRangedAttDamage(5);
-    setArmorReduction(0);
-
-    std::cout << getName() << " (Ninja) is appearing" << std::endl;
+    hitPoints = 60;
+    maxHitPoints = 60;
+    energyPoints = 120;
+    maxEnergyPoints = 120;
+    level = 1;
+    meleeAttDamage = 60;
+    rangedAttDamage = 5;
+    armorReduction = 0;
+    std::cout << name << " (Ninja) is appearing with constructor" << std::endl;
 }
 
 NinjaTrap::~NinjaTrap(void)
-{
-    std::cout << getName() << " (Ninja) is disappearing" << std::endl;
-}
+{ std::cout << name << " (Ninja) is disappearing" << std::endl; }
 
 void NinjaTrap::ninjaShoebox(ClapTrap& target)
-{
-    std::cout << getName() << " stuns " << target.getName() << std::endl;
-}
+{ std::cout << name << " slaps " << target.getName() << std::endl; }
 
 void NinjaTrap::ninjaShoebox(NinjaTrap& target)
-{
-    std::cout << getName() << " stuns " << target.getName() << std::endl;
-}
+{ std::cout << name << " salutes " << target.getName() << std::endl; }
 
 void NinjaTrap::ninjaShoebox(ScavTrap& target)
-{
-    std::cout << getName() << " stuns " << target.getName() << std::endl;
-}
+{ std::cout << name << " hits " << target.getName() << std::endl; }
 
 void NinjaTrap::ninjaShoebox(FragTrap& target)
-{
-    std::cout << getName() << " stuns " << target.getName() << std::endl;
-}
+{ std::cout << name << " stuns " << target.getName() << std::endl; }

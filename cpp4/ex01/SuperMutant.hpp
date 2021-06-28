@@ -10,7 +10,11 @@ private:
     /* data */
 public:
     SuperMutant(/* args */);
+    SuperMutant(const SuperMutant &tmp);
     ~SuperMutant();
+
+    SuperMutant &operator=(const SuperMutant &tmp);
+
     void takeDamage(int value);
 };
 

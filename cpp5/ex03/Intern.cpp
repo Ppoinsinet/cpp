@@ -3,34 +3,26 @@
 Intern::Intern()
 {}
 
+Intern::Intern(const Intern &tmp)
+{ (void)tmp; }
+
 Intern::~Intern()
 {}
 
+Intern &Intern::operator=(const Intern &tmp)
+{ (void)tmp; return *this; }
+
 Form *Intern::createPresidential(std::string target)
-{
-    Form *ptr = new PresidentialPardonForm();
-    ptr->setTarget(target);
-    return ptr;
-}
+{ return new PresidentialPardonForm(target); }
 
 Form *Intern::createRobotomy(std::string target)
-{
-    Form *ptr = new RobotomyRequestForm();
-    ptr->setTarget(target);
-    return ptr;
-}
+{ return new RobotomyRequestForm(target); }
 
 Form *Intern::createShrubbery(std::string target)
-{
-    Form *ptr = new ShrubberyCreationForm();
-    ptr->setTarget(target);
-    return ptr;
-}
+{ return new ShrubberyCreationForm(target); }
 
 const char *Intern::FormNotFound::what() const throw()
-{
-    return "Form was not found";
-}
+{ return "Form was not found"; }
 
 Form *Intern::makeForm(std::string name, std::string target)
 {
@@ -40,9 +32,9 @@ Form *Intern::makeForm(std::string name, std::string target)
     for (int i = 0; i < 3; i++)
         if (name == comp[i])
         {
+            std::cout << "Intern creates " << name << " form" << std::endl;
             return (this->*f[i])(target);
         }
     throw Intern::FormNotFound();
-    return 0;
 }
 

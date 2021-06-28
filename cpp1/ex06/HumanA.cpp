@@ -7,17 +7,12 @@ void    HumanA::attack(void)
     << _weapon.getType() << std::endl;
 }
 
-Weapon& HumanA::getWeapon(void)
-{
-    return (_weapon);
-}
+Weapon& HumanA::getWeapon(void) const
+{ return (_weapon); }
 
 HumanA::HumanA(std::string name, Weapon& weapon)
-: _weapon(weapon)
-{
-    _name = name;
-}
+: _name(name), _weapon(weapon)
+{}
 
 HumanA::~HumanA(void)
-{
-}
+{}

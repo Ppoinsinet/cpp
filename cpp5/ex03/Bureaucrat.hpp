@@ -13,8 +13,12 @@ private:
     std::string name;
     int grade;
 public:
+    Bureaucrat(void);
+    Bureaucrat(const Bureaucrat &tmp);
     Bureaucrat(std::string newName);
     ~Bureaucrat();
+
+    Bureaucrat &operator=(const Bureaucrat &tmp);
 
     std::string getName() const;
     int getGrade() const;
@@ -24,7 +28,7 @@ public:
     void decrease(void);
 
     void signForm(Form &form);
-    void executeForm(Form const& form);
+    void executeForm(Form const &form) const;
 
 
     class GradeTooHighException: public std::exception

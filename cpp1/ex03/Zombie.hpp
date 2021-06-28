@@ -3,6 +3,7 @@
 
 # include <iostream>
 # include <string>
+# include <stdlib.h>
 
 class Zombie
 {
@@ -10,10 +11,12 @@ private:
     std::string     _type;
     std::string     _name;
 public:
-    void    announce(void);
     Zombie();
     Zombie(std::string type, std::string name);
+    std::string &getName(void);
+    std::string &getType(void);
     ~Zombie();
+    void    announce(void);
 };
 
 #endif

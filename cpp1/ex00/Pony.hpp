@@ -9,10 +9,10 @@ private:
     std::string _color;
     std::string _gender;
 public:
-    void    changesColor(std::string newColor);
-    void    changesGender(std::string newGender);
-    void    getColor(void);
-    void    getGender(void);
+    void    setColor(std::string newColor);
+    void    setGender(std::string newGender);
+    std::string    getColor(void);
+    std::string    getGender(void);
     Pony();
     ~Pony();
 };

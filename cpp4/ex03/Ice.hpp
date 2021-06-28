@@ -9,6 +9,8 @@ private:
     /* data */
 public:
     Ice(/* args */);
+    Ice(const Ice &tmp);
+    Ice &operator=(const Ice &tmp);
     void use(ICharacter& target);
     Ice* clone() const;
     ~Ice();

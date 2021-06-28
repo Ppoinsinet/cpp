@@ -1,13 +1,26 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
+Bureaucrat::Bureaucrat(void)
+: name("Unknown"), grade(150)
+{}
+
+Bureaucrat::Bureaucrat(const Bureaucrat &tmp)
+: name(tmp.name), grade(tmp.grade)
+{}
+
 Bureaucrat::Bureaucrat(std::string newName)
 : name(newName), grade(150)
-{
-}
+{}
 
 Bureaucrat::~Bureaucrat()
+{}
+
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &tmp)
 {
+    name = tmp.name;
+    grade = tmp.grade;
+    return *this;
 }
 
 void Bureaucrat::increase()
@@ -24,31 +37,14 @@ void Bureaucrat::decrease()
     grade++;
 }
 
-void Bureaucrat::executeForm(Form const& form)
-{
-    if (!form.isSigned())
-        std::cout << "Error : Form is not signed" << std::endl;
-    else
-    {
-        std::cout << getName() << " executs " << form.getName() << std::endl;
-    }
-
-}
-
 std::string Bureaucrat::getName() const
-{
-    return name;
-}
+{ return name; }
 
 int Bureaucrat::getGrade() const
-{
-    return grade;
-}
+{ return grade; }
 
 void Bureaucrat::setName(std::string tmp)
-{
-    name = tmp;
-}
+{ name = tmp; }
 
 void Bureaucrat::setGrade(int tmp)
 {
@@ -72,15 +68,24 @@ void Bureaucrat::signForm(Form &form)
     }    
 }
 
-const char *Bureaucrat::GradeTooHighException::what() const throw()
+void Bureaucrat::executeForm(Form const &form) const
 {
-    return "Grade too high";
+    try
+    {
+        form.execute(*this);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << "Could not execute Form: " << e.what() << '\n';
+    }
+    
 }
 
+const char *Bureaucrat::GradeTooHighException::what() const throw()
+{ return "Grade too high"; }
+
 const char *Bureaucrat::GradeTooLowException::what() const throw()
-{
-    return "Grade too low";
-}
+{ return "Grade too low"; }
 
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& tmp)
 {

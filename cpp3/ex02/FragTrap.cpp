@@ -1,60 +1,92 @@
 #include "FragTrap.hpp"
 
+FragTrap::FragTrap(void)
+{
+    hitPoints = 100;
+    maxHitPoints = 100;
+    energyPoints = 100;
+    maxEnergyPoints = 100;
+    level = 1;
+    name = "";
+    meleeAttDamage = 30;
+    rangedAttDamage = 20;
+    armorReduction = 5;
+    std::cout << name << " (Frag) is now appearing with constructor" << std::endl;
+}
+
+FragTrap::FragTrap(const FragTrap &tmp)
+: ClapTrap(tmp.name)
+{
+    hitPoints = tmp.hitPoints;
+    maxHitPoints = tmp.maxHitPoints;
+    energyPoints = tmp.energyPoints;
+    maxEnergyPoints = tmp.maxEnergyPoints;
+    level = tmp.level;
+    meleeAttDamage = tmp.meleeAttDamage;
+    rangedAttDamage = tmp.rangedAttDamage;
+    armorReduction = tmp.armorReduction;
+    std::cout << name << " (Frag) is now appearing with copy constructor" << std::endl;
+}
 
 FragTrap::FragTrap(std::string newName)
 : ClapTrap(newName)
 {
-    srand(time(NULL));
-    std::cout << getName() << " (Frag) is appearing" << std::endl;
+    hitPoints = 100;
+    maxHitPoints = 100;
+    energyPoints = 100;
+    maxEnergyPoints = 100;
+    meleeAttDamage = 30;
+    rangedAttDamage = 20;
+    armorReduction = 5;
+    std::cout << name << " (Frag) is now appearing with constructor" << std::endl;
 }
 
 FragTrap::~FragTrap()
+{ std::cout << name << " (Frag) is now disappearing with destructor" << std::endl; }
+
+FragTrap &FragTrap::operator=(const FragTrap &tmp)
 {
-    std::cout << getName() << " (Frag) is disappearing" << std::endl;
+    hitPoints = tmp.hitPoints;
+    maxHitPoints = tmp.maxHitPoints;
+    energyPoints = tmp.energyPoints;
+    maxEnergyPoints = tmp.maxEnergyPoints;
+    level = tmp.level;
+    name = tmp.name;
+    meleeAttDamage = tmp.meleeAttDamage;
+    rangedAttDamage = tmp.rangedAttDamage;
+    armorReduction = tmp.armorReduction;
+    return *this;
 }
 
 void FragTrap::attBoule(std::string const& target)
-{
-    std::cout << getName() << " use the famous attack \"Coup de Boule\" on " << target << std::endl;
-}
+{ std::cout << name << " uses the famous attack \"Coup de Boule\" on " << target << std::endl; }
 
 void FragTrap::attFire(std::string const& target)
-{
-    std::cout << getName() << " sends a fireball on " << target << std::endl;
-}
+{ std::cout << name << " sends a fireball on " << target << std::endl; }
 
 void FragTrap::attKick(std::string const& target)
-{
-    std::cout << getName() << " kicks " << target << std::endl;
-}
+{ std::cout << name << " kicks " << target << std::endl; }
 
 void FragTrap::attSlap(std::string const& target)
-{
-    std::cout << getName() << " slaps " << target << "\'s face" << std::endl;
-}
+{ std::cout << name << " slaps " << target << "\'s face" << std::endl; }
 
 void FragTrap::attStun(std::string const& target)
-{
-    std::cout << getName() << " use stun on " << target << std::endl;
-}
+{ std::cout << name << " use stun on " << target << std::endl; }
 
 void FragTrap::vaulthunter_dot_exe(std::string const& target)
 {
-    if (getEnergyPoints() < 25)
+    if (energyPoints < 25)
     {
-        std::cout << "Not enough energy" << std::endl;
+        std::cout << name << ": Not enough energy" << std::endl;
         return ;
     }
+    void (FragTrap::*tab[5])(std::string const&);
+    tab[0] = &FragTrap::attSlap;
+    tab[1] = &FragTrap::attKick;
+    tab[2] = &FragTrap::attBoule;
+    tab[3] = &FragTrap::attStun;
+    tab[4] = &FragTrap::attFire;
     int tmp = rand() % 5;
-    if (tmp == 0)
-        attSlap(target);
-    else if (tmp == 1)
-        attKick(target);
-    else if (tmp == 2)
-        attStun(target);
-    else if (tmp == 3)
-        attBoule(target);
-    else
-        attFire(target);
-    setEnergyPoints(getEnergyPoints() - 25);
+    (this->*tab[tmp])(target);
+    energyPoints -= 25;
 }

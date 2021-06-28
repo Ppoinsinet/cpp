@@ -5,30 +5,37 @@
 
 int main()
 {
+    srand(time(NULL));
     Bureaucrat moi("moi");
-    try
-    {
-        std::cout << moi;
-        moi.increase();
-        std::cout << moi;
-    }
-    catch (const std::exception& e)
-    {
-        std::cout << "yo" << std::endl;
-    }
+    
     try
     {    
         Intern esclave;
-        Form *ptr = esclave.makeForm("presidential pardon", "mechant");
+        Form *ptr = esclave.makeForm("unkown form", "mechant");
         std::cout << *ptr;
         moi.setGrade(1);
         ptr->beSigned(moi);
-        moi.executeForm(*ptr);
         std::cout << *ptr;
+        moi.executeForm(*ptr);
     }
     catch(const std::exception& e)
     {
-        std::cerr << e.what() << '\n';
+        std::cerr << "Exception : " << e.what() << '\n';
+    }
+
+    try
+    {    
+        Intern esclave;
+        Form *ptr = esclave.makeForm("robotomy request", "mechant");
+        std::cout << *ptr;
+        moi.setGrade(1);
+        ptr->beSigned(moi);
+        std::cout << *ptr;
+        moi.executeForm(*ptr);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << "Exception : " << e.what() << '\n';
     }
     
     return (0);

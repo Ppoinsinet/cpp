@@ -4,6 +4,7 @@ int main()
 {
     ZombieEvent event("badGuy");
 
+    srand(time(NULL));
     Zombie *ptr = event.randomChump();
     ptr->announce();
     delete ptr;

@@ -7,12 +7,12 @@
 class Brain
 {
 private:
-    int     age;
+    int     _age;
 public:
-    std::string    identify(void);
-    int            getAge(void);
     Brain();
     ~Brain();
+    std::string    identify(void) const;
+    int            getAge(void) const;
 };
 
 

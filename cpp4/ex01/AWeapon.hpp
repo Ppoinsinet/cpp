@@ -12,7 +12,10 @@ protected:
     int APCost;
     std::string output;
 public:
-    AWeapon(std::string const& name, int apcost, int damage);
+    AWeapon(std::string const& name = "SimpleRifle", int apcost = 2, int damage = 10);
+    AWeapon(const AWeapon &tmp);
+
+    AWeapon &operator=(const AWeapon &tmp);
 
     std::string getName() const;
     int getAPCost(void) const;

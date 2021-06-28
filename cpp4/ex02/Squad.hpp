@@ -7,19 +7,27 @@
 #include "ISpaceMarine.hpp"
 #include "ISquad.hpp"
 
+typedef struct squad_element
+{
+    ISpaceMarine *unit;
+    squad_element *next;
+}               squad_t;
+
 class Squad : public ISquad
 {
 private:
     int count;
-    ISpaceMarine *squad;
+    squad_t *squad;
 public:
     Squad();
+    Squad(const Squad &tmp);
     ~Squad();
+
+    Squad &operator=(const Squad &tmp);
+
     int getCount() const;
     ISpaceMarine* getUnit(int) const;
     int push(ISpaceMarine*);
-
-    void operator=(const Squad& tmp);
 };
 
 #endif

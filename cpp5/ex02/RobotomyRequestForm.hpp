@@ -2,6 +2,7 @@
 #define ROBOTOMYREQUESTFORM_HPP
 
 #include "Form.hpp"
+#include <stdlib.h>
 
 class RobotomyRequestForm : public Form
 {
@@ -9,9 +10,13 @@ private:
     /* data */
 public:
     RobotomyRequestForm(/* args */);
+    RobotomyRequestForm(std::string target);
+    RobotomyRequestForm(const RobotomyRequestForm &tmp);
     ~RobotomyRequestForm();
 
-    void execute(Bureaucrat const& executor);
+    RobotomyRequestForm &operator=(const RobotomyRequestForm &tmp);
+
+    void executeForm(void) const;
 
 };
 

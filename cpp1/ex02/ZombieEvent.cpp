@@ -1,25 +1,20 @@
 #include "ZombieEvent.hpp"
-#include <random>
+#include <stdlib.h>
 
 ZombieEvent::ZombieEvent(std::string type)
-{
-    _eventType = type;
-}
+: _eventType(type)
+{}
 
 ZombieEvent::~ZombieEvent(void)
-{
-}
+{}
 
 Zombie *ZombieEvent::newZombie(std::string name)
-{
-    Zombie *tmp = new Zombie(_eventType, name);
-    return (tmp);
-}
+{ return new Zombie(_eventType, name); }
 
 Zombie  *ZombieEvent::randomChump(void)
 {
     char tmp = 0;
-    _name = "";
+    std::string name = "";
     for (int i = 0; i < 7; i++)
     {
         if (!i)
@@ -28,6 +23,5 @@ Zombie  *ZombieEvent::randomChump(void)
             tmp = rand() % 26 + 'a';
         name += tmp;
     }
-    Zombie *result = new Zombie(_eventType, name);
-    return (result);
+    return new Zombie(_eventType, name);
 }

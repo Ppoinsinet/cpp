@@ -6,11 +6,16 @@
 #include <iostream>
 #include <time.h>
 #include "ClapTrap.hpp"
-class ScavTrap: public ClapTrap
+
+class ScavTrap : public ClapTrap
 {
 public:
+    ScavTrap();
+    ScavTrap(const ScavTrap &tmp);
     ScavTrap(std::string newName);
     ~ScavTrap();
+
+    ScavTrap& operator=(const ScavTrap &tmp);
 
     void challengeArm(std::string newcomer);
     void challengePush(std::string newcomer);

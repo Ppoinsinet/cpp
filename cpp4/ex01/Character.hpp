@@ -14,20 +14,20 @@ private:
     int AP;
     AWeapon *current_weapon;
 public:
+    Character(void);
     Character(std::string const& name);
+    Character(const Character &tmp);
     ~Character();
+
+    Character &operator=(const Character& tmp);
 
     void recoverAP();
     void equip(AWeapon*);
     void attack(Enemy*);
 
-    std::string getName(void) const;
+    std::string const &getName(void) const;
     int getAP(void) const;
     AWeapon *getWeapon(void) const;
-
-    void setName(std::string name);
-    void setAP(int);
-    void setWeapon(AWeapon*);
 };
 
 std::ostream& operator<<(std::ostream& out, Character& tmp);

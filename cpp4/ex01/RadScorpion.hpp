@@ -9,7 +9,10 @@ private:
     /* data */
 public:
     RadScorpion(/* args */);
+    RadScorpion(const RadScorpion &tmp);
     ~RadScorpion();
+
+    RadScorpion &operator=(const RadScorpion &tmp);
 };
 
 

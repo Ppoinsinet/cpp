@@ -2,14 +2,27 @@
 #include "RobotomyRequestForm.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm()
-: Form("robotomy request", 72, 45)
-{
-}
+: Form("RobotomyRequest", 72, 45)
+{ setTarget("NoTarget"); }
 
-void RobotomyRequestForm::execute(Bureaucrat const& executor)
+RobotomyRequestForm::RobotomyRequestForm(std::string target)
+: Form("RobotomyRequest", 72, 45)
+{ setTarget(target); }
+
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &tmp)
+: Form("RobotomyRequest", 72, 45)
+{ setTarget(tmp.getTarget()); setSign(tmp.isSigned()); }
+
+RobotomyRequestForm::~RobotomyRequestForm()
+{}
+
+RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &tmp)
+{ setTarget(tmp.getTarget()); setSign(tmp.isSigned()); return *this; }
+
+void RobotomyRequestForm::executeForm(void) const
 {
-    if (!isSigned())
-        return ;
-    std::cout << "* vrrrrrrrrrrrrrrr * " <<
-    getTarget() << " was robotomized in 50" << std::endl;
+    if (rand() % 2 == 0)
+        std::cout << "* vrrrrrrrrrrrrrrr * " << getTarget() << " was robotomized" << std::endl;
+    else
+        std::cout << "Robotomy was failed" << std::endl;
 }

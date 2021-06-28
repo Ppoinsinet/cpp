@@ -15,8 +15,12 @@ private:
     int grade_sign;
     int grade_execute;
 public:
+    Form(void);
+    Form(const Form &tmp);
     Form(std::string newName, int sign = 150, int execute = 150);
     ~Form();
+
+    Form &operator=(const Form &tmp);
 
     std::string getName() const;
     bool isSigned() const;

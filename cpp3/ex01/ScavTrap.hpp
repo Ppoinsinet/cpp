@@ -1,3 +1,6 @@
+#ifndef SCAVTRAP_HPP
+#define SCAVTRAP_HPP
+
 #include <stdlib.h>
 #include <string>
 #include <iostream>
@@ -5,17 +8,23 @@
 class ScavTrap
 {
 private:
-    int hitPoints;
-    int maxHitPoints;
-    int energyPoints;
-    int level;
+    unsigned int hitPoints;
+    unsigned int maxHitPoints;
+    unsigned int energyPoints;
+    unsigned int maxEnergyPoints;
+    unsigned int level;
     std::string name;
-    int meleeAttDamage;
-    int rangedAttDamage;
-    int armorReduction;
+    unsigned int meleeAttDamage;
+    unsigned int rangedAttDamage;
+    unsigned int armorReduction;
 public:
+    ScavTrap();
+    ScavTrap(const ScavTrap &tmp);
     ScavTrap(std::string newName);
     ~ScavTrap();
+
+    ScavTrap& operator=(const ScavTrap &tmp);
+
     void rangedAttack(std::string const& target);
     void meleeAttack(std::string const& target);
     void takeDamage(unsigned int amount);
@@ -27,3 +36,5 @@ public:
 
     void challengeNewcomer(std::string newcomer);
 };
+
+#endif

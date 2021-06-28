@@ -12,7 +12,11 @@ private:
     /* data */
 public:
     Intern(/* args */);
+    Intern(const Intern &tmp);
     ~Intern();
+
+    Intern &operator=(const Intern &tmp);
+
     Form *createPresidential(std::string target);
     Form *createRobotomy(std::string target);
     Form *createShrubbery(std::string target);

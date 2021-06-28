@@ -8,13 +8,18 @@
 #include "FragTrap.hpp"
 #include "NinjaTrap.hpp"
 
-class SuperTrap: virtual public FragTrap, virtual public NinjaTrap
+class SuperTrap: public FragTrap, public NinjaTrap
 {
 public:
-    using FragTrap::rangedAttack;
-    using NinjaTrap::meleeAttack;
+    SuperTrap(void);
+    SuperTrap(const SuperTrap &tmp);
     SuperTrap(std::string newName);
     ~SuperTrap();
+
+    SuperTrap &operator=(const SuperTrap &tmp);
+    
+    using NinjaTrap::meleeAttack;
+    using FragTrap::rangedAttack;
 };
 
 #endif

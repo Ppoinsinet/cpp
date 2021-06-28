@@ -32,6 +32,7 @@ void identify_from_reference(Base& p)
     }
     catch (const std::exception& e)
     {}
+    
     try
     {
         dynamic_cast<A&>(p);
@@ -40,6 +41,7 @@ void identify_from_reference(Base& p)
     }
     catch(const std::exception& e)
     {}
+
     try
     {
         dynamic_cast<C&>(p);

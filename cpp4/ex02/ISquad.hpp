@@ -1,3 +1,5 @@
+#include "ISpaceMarine.hpp"
+
 class ISquad
 {
 public:

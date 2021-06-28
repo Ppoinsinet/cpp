@@ -10,16 +10,19 @@ protected:
     int HP;
     std::string type;
 public:
+    Enemy(void);
+    Enemy(const Enemy &tmp);
     Enemy(int hp, std::string const& type);
     virtual ~Enemy();
-    std::string getType() const;
+
+    Enemy &operator=(const Enemy &tmp);
+
     int getHP() const;
+    void setHP(int value);
 
     virtual void takeDamage(int);
 
-    int getHP(void);
-    void setHP(int value);
-    std::string getType(void);
+    std::string const &getType() const;
     void setType(std::string);
 };
 

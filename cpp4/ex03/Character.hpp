@@ -14,15 +14,17 @@ private:
     std::string name;
     AMateria *tab[4];
 public:
+    Character(void);
+    Character(const Character &tmp);
     Character(std::string name);
     ~Character();
+    
+    Character &operator=(const Character& tmp);
 
     std::string const& getName() const;
     void equip(AMateria *m);
     void unequip(int idx);
     void use(int idx, ICharacter& target);
-
-    void operator=(const Character& tmp);
 };
 
 

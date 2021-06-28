@@ -3,16 +3,16 @@
 void    ponyOnTheStack(void)
 {
     Pony    myPony;
-    myPony.changesColor("Blue");
-    myPony.changesGender("Female");
+    myPony.setColor("Blue");
+    myPony.setGender("Female");
 }
 
 void    ponyOnTheHeap(void)
 {
     Pony    *myPony;
     myPony = new Pony();
-    myPony->changesColor("Green");
-    myPony->changesGender("Female");
+    myPony->setColor("Green");
+    myPony->setGender("Female");
     delete myPony;
 }
 

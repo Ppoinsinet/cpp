@@ -1,10 +1,9 @@
 #include "Zombie.hpp"
 
-Zombie::Zombie()
+Zombie::Zombie(void)
+: _type("myType"), _name("")
 {
-    _type = "myType";
-    char tmp = 0;
-    std::string name = "";
+    int tmp = 0;
     for (int i = 0; i < 7; i++)
     {
         if (!i)
@@ -16,14 +15,17 @@ Zombie::Zombie()
 }
 
 Zombie::Zombie(std::string type, std::string name)
-{
-    _type = type;
-    _name = name;
-}
+: _type(type), _name(name)
+{}
 
 Zombie::~Zombie(void)
-{
-}
+{}
+
+std::string &Zombie::getName(void)
+{ return _name; }
+
+std::string &Zombie::getType(void)
+{ return _type; }
 
 void    Zombie::announce(void)
 {

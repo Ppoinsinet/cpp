@@ -10,21 +10,44 @@ MateriaSource::MateriaSource()
     tab[3] = 0;
 }
 
+MateriaSource::MateriaSource(const MateriaSource &tmp)
+{
+    size = tmp.size;
+    for (int k = 0; k < tmp.size; k++)
+        tab[k] = tmp.tab[k]->clone();
+}
+
 MateriaSource::~MateriaSource()
 {
+    for (int i = 0; i < 4; i++)
+        delete tab[i];
+    size = 0;
+}
+
+MateriaSource &MateriaSource::operator=(const MateriaSource &tmp)
+{
+    for (int i = 0; i < 4; i++)
+        delete tab[i];
+    for (int k = 0; k < tmp.size; k++)
+        tab[k] = tmp.tab[k]->clone();
+    size = tmp.size;
+    return *this;
 }
 
 void MateriaSource::learnMateria(AMateria *tmp)
 {
-    AMateria *copy = tmp->clone();
-    tab[size++] = copy;
+    if (size >= 4 || !tmp)
+        return ;
+    //AMateria *copy = tmp->clone();
+    //tab[size++] = copy;
+    tab[size++] = tmp;
 }
 
 AMateria *MateriaSource::createMateria(std::string const& tmp)
 {
     for (int i = 0; i < 4; i++)
     {
-        if (tab[i]->getType() == tmp)
+        if (tab[i] && tab[i]->getType() == tmp)
             return tab[i]->clone();
     }
     return 0;
