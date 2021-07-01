@@ -14,10 +14,12 @@ int main()
     {
         std::cout << e.what() << std::endl;
     }
-    Form form("mon formulaire");
+    Form form("mon formulaire", 50, 1);
 
     std::cout << form;
 
+    moi.signForm(form);
+    moi.setGrade(1);
     moi.signForm(form);
     std::cout << form;
 

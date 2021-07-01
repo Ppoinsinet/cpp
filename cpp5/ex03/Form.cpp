@@ -18,11 +18,8 @@ Form::~Form()
 
 Form &Form::operator=(const Form &tmp)
 {
-    name = tmp.name;
     target = tmp.target;
     sign = tmp.sign;
-    grade_sign = tmp.grade_sign;
-    grade_execute = tmp.grade_execute;
     return *this;
 }
 
@@ -38,17 +35,14 @@ int Form::getGradeSign() const
 int Form::getGradeExec() const
 { return grade_execute; }
 
+void Form::setTarget(std::string value)
+{ target = value; }
+
 std::string Form::getTarget() const
 { return target; }
 
 void Form::setSign(bool value)
 { sign = value; }
-
-void Form::setTarget(std::string newTarget)
-{ target = newTarget; }
-
-void Form::setName(std::string value)
-{ name = value; }
 
 void Form::beSigned(Bureaucrat& person)
 {

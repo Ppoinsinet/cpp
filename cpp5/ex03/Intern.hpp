@@ -21,11 +21,6 @@ public:
     Form *createRobotomy(std::string target);
     Form *createShrubbery(std::string target);
 
-    class FormNotFound : public std::exception
-    {
-        virtual const char *what() const throw();
-    };
-
     Form *makeForm(std::string name, std::string target);
 };
 

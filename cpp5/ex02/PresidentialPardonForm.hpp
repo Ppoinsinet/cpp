@@ -8,7 +8,8 @@ class PresidentialPardonForm : public Form
 private:
     /* data */
 public:
-    PresidentialPardonForm(std::string target = "NoTarget");
+    PresidentialPardonForm(void);
+    PresidentialPardonForm(std::string target);
     PresidentialPardonForm(const PresidentialPardonForm &tmp);
     ~PresidentialPardonForm();
 

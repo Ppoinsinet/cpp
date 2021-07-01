@@ -21,9 +21,6 @@ Form *Intern::createRobotomy(std::string target)
 Form *Intern::createShrubbery(std::string target)
 { return new ShrubberyCreationForm(target); }
 
-const char *Intern::FormNotFound::what() const throw()
-{ return "Form was not found"; }
-
 Form *Intern::makeForm(std::string name, std::string target)
 {
     std::string comp[3] = {"presidential pardon", "robotomy request", "shrubbery creation"};
@@ -35,6 +32,7 @@ Form *Intern::makeForm(std::string name, std::string target)
             std::cout << "Intern creates " << name << " form" << std::endl;
             return (this->*f[i])(target);
         }
-    throw Intern::FormNotFound();
+    std::cout << name << " form was not found\n";
+    return 0;
 }
 

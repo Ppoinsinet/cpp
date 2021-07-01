@@ -17,7 +17,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 {}
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &tmp)
-{ setSign(tmp.isSigned()); return *this; }
+{ setTarget(tmp.getTarget()); setSign(tmp.isSigned()); return *this; }
 
 void ShrubberyCreationForm::executeForm(void) const
 {

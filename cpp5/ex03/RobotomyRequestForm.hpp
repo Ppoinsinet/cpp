@@ -16,7 +16,7 @@ public:
 
     RobotomyRequestForm &operator=(const RobotomyRequestForm &tmp);
 
-    void executeForm(void) const;
+    virtual void executeForm(void) const;
 
 };
 

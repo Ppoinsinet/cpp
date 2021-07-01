@@ -16,7 +16,7 @@ public:
 
     ShrubberyCreationForm &operator=(const ShrubberyCreationForm &tmp);
 
-    void executeForm(void) const;
+    virtual void executeForm(void) const;
 };
 
 

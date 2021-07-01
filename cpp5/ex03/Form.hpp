@@ -10,11 +10,11 @@ class Bureaucrat;
 class Form
 {
 private:
-    std::string name;
+    const std::string name;
     std::string target;
     bool sign;
-    int grade_sign;
-    int grade_execute;
+    const int grade_sign;
+    const int grade_execute;
 public:
     Form(void);
     Form(const Form &tmp);
@@ -30,10 +30,9 @@ public:
     std::string getTarget() const;
     void setTarget(std::string newTarget);
 
-    void execute(const Bureaucrat &tmp) const;
+    void execute(Bureaucrat const &tmp) const;
 
     virtual void executeForm(void) const = 0;
-
 
     void setName(std::string value);
     void beSigned(Bureaucrat& person);

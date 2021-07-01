@@ -17,7 +17,7 @@ Bureaucrat::~Bureaucrat()
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &tmp)
 {
-    name = tmp.name;
+    //name = tmp.name;
     grade = tmp.grade;
     return *this;
 }
@@ -41,9 +41,6 @@ std::string Bureaucrat::getName() const
 
 int Bureaucrat::getGrade() const
 { return grade; }
-
-void Bureaucrat::setName(std::string tmp)
-{ name = tmp; }
 
 void Bureaucrat::setGrade(int tmp)
 {
